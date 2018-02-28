@@ -7,7 +7,7 @@ request.get(url).end(function(err, res){
   if(err){
     throw new Error('');
   }
-  let $ = cheerio.load(res.text);
+  let $ = cheerio.load(res.text, {decodeEntities: false});
   // console.log($.html());
   console.log($('#newList').html())
 })

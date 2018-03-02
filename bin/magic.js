@@ -9,5 +9,16 @@ request.get(url).end(function(err, res){
   }
   let $ = cheerio.load(res.text, {decodeEntities: false});
   // console.log($.html());
-  console.log($('#newList').html())
+  
+  let noticeListEle = $('#newList li');
+  let noticeDataList = [];
+  for(let i = 0, length = noticeListEle.length; i<length; i++){
+    let singleEle = $(noticeListEle[i]);
+    noticeDataList.push({
+      title: singleEle.find('a').attr('title'),
+      href: singleEle.find('a').attr('href')
+    })
+  }
+  console.log(noticeDataList)
 })
+
